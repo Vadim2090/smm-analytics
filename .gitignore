@@ -1,0 +1,19 @@
+node_modules/
+dist/
+*.log
+*.tsbuildinfo
+.DS_Store
+
+# local user data — never commit
+.smm-analytics/
+*.db
+*.db-journal
+cookies/
+
+# editor
+.vscode/
+.idea/
+
+# env (in case anyone adds one later)
+.env
+.env.*
