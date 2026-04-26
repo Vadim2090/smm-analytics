@@ -175,7 +175,17 @@ export async function writeToSheet(tabName, posts) {
 
     for (const p of posts) {
       const row = postToRow(p);
-      if (existingByUrl.has(p.url)) {
+      const existing = existingByUrl.get(p.url);
+      if (existing) {
+        // Preserve the date originally written for this post. LinkedIn shows
+        // relative labels ("1w", "2d") which our extractor converts using
+        // (now - n * unit). That value drifts every day the post stays at
+        // the same label, so re-scraping silently rewrites the date.
+        // Only the first observation of a post has a tight bound on its
+        // actual date — keep that.
+        if (existing[0] && /^\d{4}-\d{2}-\d{2}/.test(existing[0])) {
+          row[0] = existing[0];
+        }
         existingByUrl.set(p.url, row);
         updated++;
       } else {

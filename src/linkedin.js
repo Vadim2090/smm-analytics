@@ -140,28 +140,42 @@ async function extractPostData(page) {
         impressions = parseInt(impEl.innerText?.replace(/[^0-9]/g, ''), 10) || 0;
       }
 
-      // Date — convert relative label to absolute date.
-      // LinkedIn returns text like "1w", "1w •", "1w • Edited", or with non-ASCII bullets
-      // (U+2022, U+00B7, U+22C5, U+2027, U+2219). Match the relative-time pattern
-      // anywhere in the string instead of requiring a fully-cleaned input.
-      const dateSpan = item.querySelector('.update-components-actor__sub-description span');
-      const rawDate = dateSpan?.innerText?.trim() || '';
-      let date = rawDate;
+      // Date — three sources, in order of accuracy:
+      //   1. <time datetime="..."> — exact ISO timestamp LinkedIn embeds for
+      //      accessibility on some posts. Always prefer this when present.
+      //   2. Absolute date string (e.g. "April 18, 2026") — older posts.
+      //   3. Relative label ("1w", "2d", "3mo") — fallback for recent posts.
+      //      This is imprecise: "1w" means 7-13 days old, we round to 7.
+      let date = '';
 
-      const relMatch = rawDate.match(/(\d+)\s*(mo|h|d|w|m)\b/i);
-      if (relMatch) {
-        const n = parseInt(relMatch[1], 10);
-        const unit = relMatch[2].toLowerCase();
-        const msMap = { h: 3600000, d: 86400000, w: 604800000, mo: 2592000000, m: 60000 };
-        const postTime = new Date(nowMs - n * (msMap[unit] || 0));
-        date = postTime.toISOString().slice(0, 10); // YYYY-MM-DD
-      } else if (rawDate) {
-        // Fallback: absolute date string (e.g., "April 18, 2026" — older
-        // posts, backfill rows, non-EN locales). Avoids leaving raw UI text
-        // in the cell, which would break sortRowsByDate.
-        const parsed = new Date(rawDate);
+      // 1. <time datetime>
+      const timeEl = item.querySelector('time[datetime]');
+      const datetimeAttr = timeEl?.getAttribute('datetime');
+      if (datetimeAttr) {
+        const parsed = new Date(datetimeAttr);
         if (!isNaN(parsed.getTime())) {
           date = parsed.toISOString().slice(0, 10);
+        }
+      }
+
+      // 2 + 3. Fallback to the displayed text
+      if (!date) {
+        const dateSpan = item.querySelector('.update-components-actor__sub-description span');
+        const rawDate = dateSpan?.innerText?.trim() || '';
+        date = rawDate;
+
+        const relMatch = rawDate.match(/(\d+)\s*(mo|h|d|w|m)\b/i);
+        if (relMatch) {
+          const n = parseInt(relMatch[1], 10);
+          const unit = relMatch[2].toLowerCase();
+          const msMap = { h: 3600000, d: 86400000, w: 604800000, mo: 2592000000, m: 60000 };
+          const postTime = new Date(nowMs - n * (msMap[unit] || 0));
+          date = postTime.toISOString().slice(0, 10);
+        } else if (rawDate) {
+          const parsed = new Date(rawDate);
+          if (!isNaN(parsed.getTime())) {
+            date = parsed.toISOString().slice(0, 10);
+          }
         }
       }
 
