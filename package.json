@@ -1,7 +1,19 @@
 {
   "name": "smm-analytics",
-  "version": "0.0.1",
-  "description": "Free, self-hosted SMM analytics for marketers — track LinkedIn + X engagement, segmented by audience.",
+  "version": "0.1.0",
+  "description": "Free, self-hosted SMM analytics — track LinkedIn + X engagement segmented by audience type",
+  "type": "module",
+  "main": "src/index.js",
+  "license": "MIT",
+  "homepage": "https://github.com/Vadim2090/smm-analytics",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vadim2090/smm-analytics.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Vadim2090/smm-analytics/issues"
+  },
+  "author": "Vadim Smirnov",
   "keywords": [
     "linkedin",
     "twitter",
@@ -11,51 +23,24 @@
     "social-media",
     "marketing",
     "puppeteer",
+    "gologin",
     "audience-segmentation"
   ],
-  "author": "Vadim Smirnov",
-  "license": "MIT",
-  "homepage": "https://github.com/Vadim2090/smm-analytics",
-  "bugs": {
-    "url": "https://github.com/Vadim2090/smm-analytics/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Vadim2090/smm-analytics.git"
-  },
-  "type": "module",
   "engines": {
     "node": ">=18"
   },
-  "bin": {
-    "smm-analytics": "./bin/smm-analytics.js"
-  },
-  "files": [
-    "bin/",
-    "dist/",
-    "templates/",
-    "README.md",
-    "LICENSE",
-    "SPEC.md"
-  ],
   "scripts": {
-    "build": "tsc",
-    "dev": "tsx src/cli.ts",
-    "start": "node dist/cli.js",
-    "test": "node --test src/**/*.test.ts"
+    "start": "node src/index.js",
+    "linkedin": "node src/index.js --platform linkedin",
+    "twitter": "node src/index.js --platform twitter",
+    "backfill": "node src/index.js --backfill",
+    "backfill:linkedin": "node src/index.js --backfill --platform linkedin",
+    "backfill:twitter": "node src/index.js --backfill --platform twitter",
+    "test": "node --test test/*.test.js"
   },
   "dependencies": {
-    "@inquirer/prompts": "^7.0.0",
-    "better-sqlite3": "^11.3.0",
-    "kleur": "^4.1.5",
-    "puppeteer": "^23.0.0",
-    "yaml": "^2.6.0",
-    "zod": "^3.23.0"
-  },
-  "devDependencies": {
-    "@types/better-sqlite3": "^7.6.11",
-    "@types/node": "^22.0.0",
-    "tsx": "^4.19.0",
-    "typescript": "^5.6.0"
+    "dotenv": "^16.4.7",
+    "gologin": "^2.2.8",
+    "googleapis": "^144.0.0"
   }
 }
