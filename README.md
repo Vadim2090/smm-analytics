@@ -7,14 +7,27 @@
 
 ## Why this exists
 
-Native LinkedIn and X analytics tell you total likes / views / comments. Useful, but missing the part that actually matters: **who is engaging, and does it match who you're trying to reach**.
+LinkedIn does show per-post demographics — Company size, Job title, Industry, Seniority, Location. Useful, but with five real limits:
+
+1. **Per post only** — you have to click into each post. No aggregate across your last 50 posts.
+2. **LinkedIn's pre-baked buckets** — Software Engineer / Founder / Director / Senior / Entry / IT Consulting. You can't define "VC building AI" or "Founders in YC" or "Friends from college".
+3. **Anonymous percentages** — you see *"22% are Software Engineers"* but not **which 22%**. You can't build a list. You can't follow up.
+4. **No way to exclude noise** — your team, friends, alt accounts inflate every breakdown.
+5. **Roughly 28-day window** for most metrics.
+
+X gives you even less.
+
+So the question that actually matters is hard to answer:
+
+> *"What type of content is hitting my target audience — and which specific people engaged with it, so I can follow up?"*
 
 This tool fills that gap:
 
 - **Define your own audience segments** — VC, Founder, Engineer, Designer, your own buckets. Keyword rules in a Google Sheet, not code.
-- **See engagement broken down by segment** — overall, per post, per platform (LinkedIn / X). Which posts pull in Founders? Which pull in Engineers? Find out.
-- **Track every post over time** — not just the last 28 days. Full history in your own Google Sheet, append-only.
-- **Exclude noise** — your team, your friends, your alt accounts. They count toward total engagement but never toward "outside team" totals or audience segments.
+- **Cross-post and per-post breakdowns** — which posts pull in Founders, which pull in Engineers, across both LinkedIn and X.
+- **Named individuals, not anonymous percentages** — every reactor with name, headline, profile URL, and segment. Drop into your CRM, follow up, build lookalike lists.
+- **Exclude noise** — your team, friends, alt accounts never count toward audience segments.
+- **Full history** — every post you make appended to your own Google Sheet, not capped at 28 days.
 
 ## The two questions it answers
 
