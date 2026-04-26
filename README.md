@@ -21,7 +21,7 @@ So the question that actually matters is hard to answer:
 
 > *"What type of content is hitting my target audience — and which specific people engaged with it, so I can follow up?"*
 
-This tool fills that gap:
+**Our solution is a dashboard that turns LinkedIn + X engagement into actionable lists — by *your* segments, across *all* your posts, with every engager named.**
 
 - **Define your own audience segments** — VC, Founder, Engineer, Designer, your own buckets. Keyword rules in a Google Sheet, not code.
 - **Cross-post and per-post breakdowns** — which posts pull in Founders, which pull in Engineers, across both LinkedIn and X.
