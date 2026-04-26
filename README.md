@@ -1,14 +1,25 @@
 # smm-analytics
 
-> Free, self-hosted SMM analytics for marketers. Tracks your LinkedIn + X presence and segments engagement by audience type — so you see *who's actually reading you*, not just how many likes you got.
+> Self-hosted dashboard for LinkedIn + X. Tracks every post you make over time, segments your audience the way **you** define it, and shows you what content actually works for the people you care about.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Node 18+](https://img.shields.io/badge/Node-18%2B-green.svg)](https://nodejs.org)
 
-## What it answers
+## Why this exists
+
+Native LinkedIn and X analytics tell you total likes / views / comments. Useful, but missing the part that actually matters: **who is engaging, and does it match who you're trying to reach**.
+
+This tool fills that gap:
+
+- **Define your own audience segments** — VC, Founder, Engineer, Designer, your own buckets. Keyword rules in a Google Sheet, not code.
+- **See engagement broken down by segment** — overall, per post, per platform (LinkedIn / X). Which posts pull in Founders? Which pull in Engineers? Find out.
+- **Track every post over time** — not just the last 28 days. Full history in your own Google Sheet, append-only.
+- **Exclude noise** — your team, your friends, your alt accounts. They count toward total engagement but never toward "outside team" totals or audience segments.
+
+## The two questions it answers
 
 1. **Of the people engaging with my posts, how many are my target audience?**
-2. **Which posts work best for which audience?**
+2. **Which of my posts work best with which audience?**
 
 Your deep-tech rants pull in Engineers; your career-arc reflections pull in Founders. Knowing the split changes what you write next.
 

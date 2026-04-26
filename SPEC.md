@@ -1,16 +1,19 @@
 # smm-analytics — v0.1 Spec
 
-> Free, self-hosted SMM analytics tool for marketers. Tracks your own LinkedIn + X
-> profiles and segments engagement by audience type — so you see *who's actually
-> reading you*, not just how many likes you got.
+> Self-hosted dashboard for LinkedIn + X. Tracks every post you make over time,
+> segments your audience the way you define it, and shows you what content
+> actually works for the people you care about.
 
 ## Who it's for
 
-Solo marketer / small marketing team / founder doing their own SMM. Anyone who
-wants to answer:
+Anyone who posts on LinkedIn or X and wants to know more than total likes —
+specifically:
 
 1. **"Of the people engaging with my posts, how many are my target audience?"**
-2. **"Which posts work best for which audience?"**
+2. **"Which of my posts work best with which audience?"**
+
+Founders, consultants, sales, recruiters, content creators, executives,
+SMM teams — anyone whose audience matters more than the raw count.
 
 ## Design principles
 
